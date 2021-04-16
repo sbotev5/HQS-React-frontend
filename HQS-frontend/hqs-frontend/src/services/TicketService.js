@@ -18,6 +18,11 @@ class TicketService{
     updateTicket(ticket, ticketId){
         return axios.put(TICKET_API_BASE_URL + '/' + ticketId, ticket)
     }
+
+    
+    deleteTicket(ticketId){
+        return axios.delete(TICKET_API_BASE_URL + '/' + ticketId)
+    }
 }
 
 export default new TicketService();
