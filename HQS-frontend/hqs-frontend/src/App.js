@@ -5,6 +5,7 @@ import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ViewTicketsComponent from './components/ViewTicketsComponent';
 import CreateTicketComponent from './components/CreateTicketComponent';
+import ModifyTicketComponent from './components/ModifyTicketComponent';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path ="/" exact component = {ViewTicketsComponent}></Route>
       <Route path ="/tickets" component = {ViewTicketsComponent}></Route>
       <Route path ="/add-ticket" component = {CreateTicketComponent}></Route>
+      <Route path ="/update-ticket/:id" component = {ModifyTicketComponent}></Route>
       <ViewTicketsComponent/>
       </Switch>
     </div>

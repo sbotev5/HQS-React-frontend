@@ -9,11 +9,17 @@ class ViewTicketsComponent extends Component {
             tickets: []
         }
         this.addTicket = this.addTicket.bind(this);
+        this.editTicket = this.editTicket.bind(this);
     }
+
     componentDidMount(){
         TicketService.getTickets().then((res) => {
             this.setState({ tickets: res.data});
     });
+    }
+
+    editTicket(id){
+        this.props.history.push(`/update-ticket/${id}`);
     }
 
     addTicket(){
@@ -55,6 +61,9 @@ class ViewTicketsComponent extends Component {
                                         <td>{ticket.urgency}</td>
                                         <td>{ticket.solution}</td>
                                         <td>{ticket.timeCreated}</td>
+                                        <td>
+                                                 <button onClick={ () => this.editTicket(ticket.id)} className="btn btn-info">Update </button>
+                                             </td>
                                     </tr>
                                 )
                             }
