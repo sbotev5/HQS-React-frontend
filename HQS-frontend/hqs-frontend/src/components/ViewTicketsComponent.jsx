@@ -8,16 +8,25 @@ class ViewTicketsComponent extends Component {
         this.state = {
             tickets: []
         }
+        this.addTicket = this.addTicket.bind(this);
     }
     componentDidMount(){
         TicketService.getTickets().then((res) => {
             this.setState({ tickets: res.data});
     });
     }
+
+    addTicket(){
+        this.props.history.push('/add-ticket');
+    }
+
     render() {
         return (
             <div>
                <h2 className="text-center">Tickets</h2> 
+               <div className = "row">
+                <button className = "btn btn-primary" onClick = {this.addTicket}> Add Ticket</button>
+               </div>
                 <div className= "row">
                     <table className = "table table-striped table-bordered">
 
@@ -29,7 +38,8 @@ class ViewTicketsComponent extends Component {
                                <th>Description</th> 
                                <th>Urgency</th> 
                                <th>Solution</th> 
-                               <th>Time Created</th> 
+                               <th>Created</th> 
+                               <th>Actions</th> 
                             </tr>
                         </thead>
 
