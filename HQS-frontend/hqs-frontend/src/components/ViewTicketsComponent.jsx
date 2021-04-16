@@ -10,6 +10,7 @@ class ViewTicketsComponent extends Component {
         }
         this.addTicket = this.addTicket.bind(this);
         this.editTicket = this.editTicket.bind(this);
+        this.deleteTicket = this.deleteTicket.bind(this);
     }
 
     componentDidMount(){
@@ -24,6 +25,17 @@ class ViewTicketsComponent extends Component {
 
     addTicket(){
         this.props.history.push('/add-ticket');
+    }
+
+    
+    deleteTicket(ticketId){
+       TicketService.deleteTicket(ticketId).then ( res => {
+
+        TicketService.getTickets().then((res) => {
+            this.setState({ tickets: res.data});
+    });
+
+       })
     }
 
     render() {
@@ -62,7 +74,8 @@ class ViewTicketsComponent extends Component {
                                         <td>{ticket.solution}</td>
                                         <td>{ticket.timeCreated}</td>
                                         <td>
-                                                 <button onClick={ () => this.editTicket(ticket.id)} className="btn btn-info">Update </button>
+                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.editTicket(ticket.id)} className="btn btn-info">Update </button>
+                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteTicket(ticket.id)} className="btn btn-danger">Delete </button>
                                              </td>
                                     </tr>
                                 )
