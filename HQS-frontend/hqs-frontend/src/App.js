@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import ViewTicketsComponent from './components/ViewTicketsComponent';
+import CreateTicketComponent from './components/CreateTicketComponent';
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <div className = "container">
       <HeaderComponent/>
     <div className="HQS">
-      <Switch> httpp://localhost:3000/tickets
-      <Route path ="/" component = {ViewTicketsComponent}></Route>
-      <Route path ="/" tickets = {ViewTicketsComponent}></Route>
+      <Switch>
+      <Route path ="/" exact component = {ViewTicketsComponent}></Route>
+      <Route path ="/tickets" component = {ViewTicketsComponent}></Route>
+      <Route path ="/add-ticket" component = {CreateTicketComponent}></Route>
       <ViewTicketsComponent/>
       </Switch>
     </div>
