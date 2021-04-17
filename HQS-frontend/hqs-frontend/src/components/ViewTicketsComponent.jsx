@@ -6,8 +6,10 @@ class ViewTicketsComponent extends Component {
         super(props)
 
         this.state = {
-            tickets: []
+            tickets: [],
+            currentSort: 'default'
         }
+
         this.addTicket = this.addTicket.bind(this);
         this.editTicket = this.editTicket.bind(this);
         this.deleteTicket = this.deleteTicket.bind(this);
@@ -38,13 +40,28 @@ class ViewTicketsComponent extends Component {
        })
     }
 
+    changeSortDirection = () => {
+		const { currentSort } = this.state;
+		let nextSort;
+
+		if (currentSort === 'down') nextSort = 'up';
+		else if (currentSort === 'up') nextSort = 'default';
+		else if (currentSort === 'default') nextSort = 'down';
+
+		this.setState({
+			currentSort: nextSort
+		});
+	};
+
     render() {
+        const { currentSort } = this.state;
         return (
             <div>
-               <h2 className="text-center">Tickets</h2> 
+               <h2 className="text-center">Help queue ticket system</h2> 
                <div className = "row">
                 <button className = "btn btn-primary" onClick = {this.addTicket}> Add Ticket</button>
                </div>
+               &nbsp;
                 <div className= "row">
                     <table className = "table table-striped table-bordered">
 
@@ -54,7 +71,10 @@ class ViewTicketsComponent extends Component {
                                <th>Title</th> 
                                <th>Author</th> 
                                <th>Description</th> 
-                               <th>Urgency</th> 
+                               <th>Urgency (0-5)
+                               <button style={{marginLeft: "10px"}} onClick={this.changeSortDirection } className="btn btn-secondary">⇅
+								</button>
+                                   </th> 
                                <th>Solution</th> 
                                <th>Created</th> 
                                <th>Actions</th> 
@@ -62,9 +82,9 @@ class ViewTicketsComponent extends Component {
                         </thead>
 
                         <tbody>
-                            {
-                                this.state.tickets.map(
-                                    ticket =>
+
+                        {[...this.state.tickets].sort(sortDirection[currentSort].fn).map(ticket => (
+    
                                     <tr key ={ticket.id}>
                                         <td>{ticket.id}</td>
                                         <td>{ticket.title}</td>
@@ -79,7 +99,7 @@ class ViewTicketsComponent extends Component {
                                              </td>
                                     </tr>
                                 )
-                            }
+                        )}
 
                         </tbody>
                     </table>
@@ -90,5 +110,20 @@ class ViewTicketsComponent extends Component {
         );
     }
 }
+
+const sortDirection = {
+	up: {
+		class: 'sort-up',
+		fn: (a, b) => a.urgency - b.urgency
+	},
+	down: {
+		class: 'sort-down',
+		fn: (a, b) => b.urgency - a.urgency
+	},
+	default: {
+		class: 'sort',
+		fn: (a, b) => a
+	}
+};
 
 export default ViewTicketsComponent;

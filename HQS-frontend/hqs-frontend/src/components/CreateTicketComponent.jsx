@@ -19,7 +19,7 @@ class CreateTicketComponent extends Component {
         this.changeUrgencyHandler = this.changeUrgencyHandler.bind(this);
         this.changeSolutionHandler = this.changeSolutionHandler.bind(this);
 
-        this.saveOrUpdateTicket = this.saveOrUpdateTicket.bind(this);
+        this.addTicket = this.addTicket.bind(this);
     }
 
     changeTitleHandler = (event) => {
@@ -46,7 +46,7 @@ class CreateTicketComponent extends Component {
 
     }
 
-    saveOrUpdateTicket = (e) =>{
+    addTicket = (e) =>{
         e.preventDefault();
         let ticket = {title : this.state.title, author : this.state.author, description : this.state.description, urgency : this.state.urgency, solution : this.state.solution};
         console.log('Created Ticket=> ' + JSON.stringify(ticket));
