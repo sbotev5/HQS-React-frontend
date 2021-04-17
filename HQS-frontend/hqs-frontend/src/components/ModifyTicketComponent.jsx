@@ -14,12 +14,7 @@ class ModifyTicketComponent extends Component {
             solution: ''
         }
 
-        this.changeTitleHandler = this.changeTitleHandler.bind(this);
-        this.changeAuthorHandler = this.changeAuthorHandler.bind(this);
-        this.changeDescriptionHandler = this.changeDescriptionHandler.bind(this);
-        this.changeUrgencyHandler = this.changeUrgencyHandler.bind(this);
-        this.changeSolutionHandler = this.changeSolutionHandler.bind(this);
-
+        this.onChange = this.onChange.bind(this);
         this.updateTicket = this.updateTicket.bind(this);
     }
 
@@ -46,30 +41,14 @@ class ModifyTicketComponent extends Component {
         });
     }
 
+    
+    onChange = e => {
+        const {name,value} = e.target;
+        this.setState({
+        [name]:value
+        })
+        }
 
-    changeTitleHandler = (event) => {
-        this.setState({title: event.target.value})
-
-    }
-
-    changeAuthorHandler = (event) => {
-        this.setState({author: event.target.value})
-
-    }
-
-    changeDescriptionHandler =(event) => {
-        this.setState({description: event.target.value})
-
-    }
-
-    changeUrgencyHandler =(event) => {
-        this.setState({urgency: event.target.value})
-
-    }
-    changeSolutionHandler =(event) => {
-        this.setState({solution: event.target.value})
-
-    }
 
     cancel(){
         this.props.history.push('/tickets');
@@ -89,35 +68,35 @@ class ModifyTicketComponent extends Component {
                             <div className = "form-group"> 
                             <label> Title: </label>
                             <input placeholder="Title" name="title" className="form-control" 
-                                value={this.state.title} onChange={this.changeTitleHandler}/>
+                                value={this.state.title} onChange={this.onChange}/>
                             
                             </div>
 
                             <div className = "form-group"> 
                             <label> Author: </label>
                             <input placeholder="Author" name="author" className="form-control" 
-                                value={this.state.author} onChange={this.changeAuthorHandler}/>
+                                value={this.state.author} onChange={this.onChange}/>
                             
                             </div>
 
                             <div className = "form-group"> 
                             <label> Description: </label>
                             <input placeholder="Description" name="description" className="form-control" 
-                                value={this.state.description} onChange={this.changeDescriptionHandler}/>
+                                value={this.state.description} onChange={this.onChange}/>
                             
                             </div>
 
                             <div className = "form-group"> 
                             <label> Urgency (Optional): </label>
-                            <input placeholder="Urgency" name="title" className="form-control" 
-                                value={this.state.urgency} onChange={this.changeUrgencyHandler}/>
+                            <input placeholder="Urgency" name="urgency" className="form-control" 
+                                value={this.state.urgency} onChange={this.onChange}/>
                             
                             </div>
 
                             <div className = "form-group"> 
                             <label> Solution (Optional): </label>
                             <input placeholder="Solution" name="solution" className="form-control" 
-                                value={this.state.solution} onChange={this.changeSolutionHandler}/>
+                                value={this.state.solution} onChange={this.onChange}/>
                             
                             </div>
 
