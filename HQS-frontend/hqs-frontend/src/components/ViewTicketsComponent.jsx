@@ -94,8 +94,8 @@ class ViewTicketsComponent extends Component {
                                         <td>{ticket.solution}</td>
                                         <td>{ticket.timeCreated}</td>
                                         <td>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.editTicket(ticket.id)} className="btn btn-info">Update </button>
-                                                 <button style={{marginLeft: "10px"}} onClick={ () => this.deleteTicket(ticket.id)} className="btn btn-danger">Delete </button>
+                                                 <button style={{marginLeft: "10px", marginTop: "10px"}} onClick={ () => this.editTicket(ticket.id)} className="btn btn-info">Update </button>
+                                                 <button style={{marginLeft: "10px", marginTop: "10px"}} onClick={ () => this.deleteTicket(ticket.id)} className="btn btn-danger">Delete </button>
                                              </td>
                                     </tr>
                                 )
