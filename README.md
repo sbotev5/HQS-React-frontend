@@ -1,6 +1,6 @@
 # HQS-React-frontend
 
-For course atendee: Stoyan Botev
+For course attendee: Stoyan Botev
 
 Video demonstration links:
 
