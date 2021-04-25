@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const TICKET_API_BASE_URL = "http://localhost:9001/tickets/tickets";
+/*const TICKET_API_BASE_URL = "http://localhost:9001/tickets/tickets";*/
+const TICKET_API_BASE_URL = "http://ec2-34-255-119-230.eu-west-1.compute.amazonaws.com:9001/tickets/tickets";
 
 class TicketService{
     getTickets(){
