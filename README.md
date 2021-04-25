@@ -16,7 +16,7 @@ How to run locally:
 
 - Have Node.js and Microsoft Visual Studio code installed
 
-- Clone git repo
+- Clone git repo and check out master branch
 
 - Open a Microsoft Visual Studio code instance inside folder
 
